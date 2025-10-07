@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace GenpactProject.Tests;
 
 [TestFixture]
-public class WikipediaTests : PlaywrightTestBase
+public class WikipediaTests : PageTest
 {
     private WikipediaPage _wikiPage = null!; // Non-nullable, initialized in SetUp
     private WikipediaApi _wikiApi = null!;   // Non-nullable, initialized in SetUp
@@ -17,7 +17,6 @@ public class WikipediaTests : PlaywrightTestBase
     [SetUp]
     public async Task SetUp()
     {
-        await SetupBrowser(); // Headless by default, toggle with HEADLESS=false
         _wikiPage = new WikipediaPage(Page);
         _wikiApi = new WikipediaApi();
     }
@@ -73,7 +72,6 @@ public class WikipediaTests : PlaywrightTestBase
     [TearDown]
     public async Task TearDown()
     {
-        await CleanupBrowser();
     }
 
     [OneTimeTearDown]
