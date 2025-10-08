@@ -63,7 +63,7 @@ public class WikipediaApi
             var fullJson = await fullResp.JsonAsync<System.Text.Json.JsonElement>();
             var fullHtml = fullJson.GetProperty("parse").GetProperty("text").GetProperty("*").GetString() ?? string.Empty;
             // Capture content after the H2 that contains id="Debugging_features" and before next H2
-            var m = Regex.Match(fullHtml, @"id=""Debugging_features""[\s\S]*?</h2>([\s\S]*?)(?=<h2)", RegexOptions.IgnoreCase);
+            var m = Regex.Match(fullHtml, @"id=""Debugging_features""[\s\S]*?</h3>([\s\S]*?)(?=<h3)", RegexOptions.IgnoreCase);
             if (!m.Success) throw new Exception("Debugging features section index not found");
             var sectionHtml = m.Groups[1].Value;
             var sectionText = Regex.Replace(sectionHtml, @"<a\b[^>]*>(.*?)<\/a>", s => s.Groups[1].Value, RegexOptions.Singleline | RegexOptions.IgnoreCase);

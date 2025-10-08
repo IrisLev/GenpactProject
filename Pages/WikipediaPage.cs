@@ -1,7 +1,7 @@
 using Microsoft.Playwright;
-using System.Text;
+//using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 
 namespace GenpactProject.Pages
 {
@@ -37,7 +37,7 @@ namespace GenpactProject.Pages
 
             // Parse full HTML and extract section between id="Debugging_features" and next H2
             var html = await _page.ContentAsync();
-            var match = Regex.Match(html, "id=\"Debugging_features\"[\\s\\S]*?</h2>([\\s\\S]*?)(?=<h2)", RegexOptions.IgnoreCase);
+            var match = Regex.Match(html, "id=\"Debugging_features\"[\\s\\S]*?</h3>([\\s\\S]*?)(?=<h3)", RegexOptions.IgnoreCase);
             if (!match.Success) return string.Empty;
             var sectionHtml = match.Groups[1].Value;
             var rawText = Regex.Replace(sectionHtml, @"<a\\b[^>]*>(.*?)<\\/a>", m => m.Groups[1].Value, RegexOptions.Singleline | RegexOptions.IgnoreCase);
