@@ -1,4 +1,3 @@
-// ...existing code...
 using Microsoft.Playwright;
 using System.Text;
 using System.Text.RegularExpressions;
