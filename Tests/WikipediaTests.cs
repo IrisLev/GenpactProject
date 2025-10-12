@@ -51,7 +51,7 @@ public class WikipediaTests : PageTest
     [Test]
     public async Task Task2_ValidateMicrosoftDevToolsLinks()
     {
-        var items = await _wikiPage.GetMicrosoftDevToolsAsync();
+        var items = await  _wikiPage.GetMicrosoftDevToolsAsync();
         bool allLinks = items.All(item => item.IsLink);
         string message = allLinks ? "" : $"Non-link items: {string.Join(", ", items.Where(i => !i.IsLink).Select(i => i.Text))}";
 
